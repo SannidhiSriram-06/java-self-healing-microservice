@@ -14,6 +14,13 @@ target/
 .sts4-cache
 .DS_Store
 target/
+*.pem
+.env
+.aws/
+target/
+terraform.tfstate
+terraform.tfstate.backup
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
