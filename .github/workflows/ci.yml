@@ -39,12 +39,18 @@ jobs:
       # SNYK DEPENDENCY SCAN
       # --------------------------
 
-      - name: Run Snyk to check for vulnerabilities (Maven)
-        uses: snyk/actions/maven@master
+      - name: Install Snyk CLI
+        run: |
+          curl -Lo snyk https://static.snyk.io/cli/latest/snyk-linux
+          chmod +x snyk
+          sudo mv snyk /usr/local/bin/
+
+      - name: Run Snyk Test (Maven)
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --severity-threshold=high
+        run: |
+          snyk auth $SNYK_TOKEN
+          snyk test --file=pom.xml --severity-threshold=high
 
       # --------------------------
       # SNYK DOCKER IMAGE SCAN
