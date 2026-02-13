@@ -38,4 +38,5 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/selfhealing-app:latest
+          tags: sannidhisriram/selfhealing-app:latest
+
